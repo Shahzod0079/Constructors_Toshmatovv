@@ -68,6 +68,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\RepoStudents.cs" />
+    <Compile Include="Classes\RepoStudents1.cs" />
     <Compile Include="Classes\Student.cs" />
     <Compile Include="Elements\Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>

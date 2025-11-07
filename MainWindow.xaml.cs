@@ -15,19 +15,39 @@ using System.Windows.Shapes;
 
 namespace Constructors_Toshmatovv
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
+        public List<Classes.Student> AllStudents = Classes.RepoStudents.AllStudents();
+        public int Count = 10;
+        public int Step = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+            CreateStudent(Step, Count);
         }
-
+        public void CreateStudent(int step, int count)
+        {
+            for (int iStudent = step; iStudent < step + count; iStudent++)
+            {
+                if (AllStudents.Count > iStudent)
+                {
+                    parent.Children.Add(new Elements.Student(AllStudents[iStudent]));
+                }
+            }
+            this.Step += count;
+        }
         private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-
+            ScrollViewer scroll = sender as ScrollViewer;
+            double parentHeight = parent.ActualHeight;
+            double windowHeight = scroll.ActualHeight - 20;
+            double deltaHeight = parentHeight - windowHeight;
+            if (deltaHeight - scroll.VerticalOffset < 140)
+            {
+                CreateStudent(Step, Count);
+            }
         }
     }
 }
