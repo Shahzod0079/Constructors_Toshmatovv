@@ -24,5 +24,10 @@ namespace Constructors_Toshmatovv
         {
             InitializeComponent();
         }
+
+        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+
+        }
     }
 }
